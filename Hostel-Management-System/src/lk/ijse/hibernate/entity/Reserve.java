@@ -6,16 +6,20 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity
 public class Reserve {
     @Id
     private String res_Id;
     private Date date;
     private String status;
 
+    @ManyToMany
+    private Student student_Id;
+    @ManyToMany
+    private Room room_type_Id;
 }

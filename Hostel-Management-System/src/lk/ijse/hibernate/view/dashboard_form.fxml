@@ -31,6 +31,11 @@
                   <Font size="16.0" />
                </font>
             </Label>
+            <ImageView fx:id="imgReserve" fitHeight="100.0" fitWidth="100.0" layoutX="523.0" layoutY="164.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@dashboardImage/booking.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

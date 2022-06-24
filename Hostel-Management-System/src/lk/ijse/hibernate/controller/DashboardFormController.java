@@ -24,6 +24,7 @@ public class DashboardFormController {
     public Label lblMenu;
     public Label lblDescription;
     public AnchorPane dashboardAnchor;
+    public ImageView imgReserve;
 
     public void imgMouseClicked(MouseEvent mouseEvent) throws IOException {
         if (mouseEvent.getSource() instanceof ImageView){
@@ -36,6 +37,9 @@ public class DashboardFormController {
                     break;
                 case "imgRoom" :
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hibernate/view/manage-room-form.fxml"));
+                    break;
+                case "imgReserve" :
+                    root = FXMLLoader.load(this.getClass().getResource(""));
                     break;
             }
 
@@ -65,6 +69,10 @@ public class DashboardFormController {
                 case "imgRoom":
                     lblMenu.setText("Manage Room");
                     lblDescription.setText("Click to add, edit, delete, search or view room");
+                    break;
+                case "imgReserve":
+                    lblMenu.setText("Manage Reserve");
+                    lblDescription.setText("Click here if you want reserve");
                     break;
             }
 
