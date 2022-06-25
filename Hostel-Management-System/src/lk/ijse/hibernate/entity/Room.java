@@ -1,12 +1,14 @@
 package lk.ijse.hibernate.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,4 +20,7 @@ public class Room {
     private String type;
     private BigDecimal key_money;
     private int qty;
+//    @OneToMany(mappedBy = "Room")
+//    private Set<Reserve>reserveSet = new HashSet<>();
+
 }

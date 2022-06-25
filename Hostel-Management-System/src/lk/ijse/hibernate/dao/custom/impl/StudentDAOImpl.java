@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.Query;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Student student = session.load(Student.class,s);
+        Student student = session.load(Student.class, s);
 
         session.delete(student);
 
@@ -40,7 +39,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public boolean update(Student dto) throws SQLException, ClassNotFoundException {
-        Session session  = FactoryConfiguration.getInstance().getSession();
+        Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         session.update(dto);
@@ -51,15 +50,15 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student search(String s) throws SQLException, ClassNotFoundException {
-        return null;
-    }
+    public List search(String s) throws SQLException, ClassNotFoundException {
+        Session session = FactoryConfiguration.getInstance().getSession();
 
-    @Override
-    public boolean exist(String s) throws SQLException, ClassNotFoundException {
-        return false;
+        String hql = "from Student where student_Id = :student_Id";
+        Query query = session.createQuery(hql);
+        query.setParameter("student_Id", s);
+        List list = query.getResultList();
+        return list;
     }
-
 
     @Override
     public List<Student> getAll() throws SQLException, ClassNotFoundException {

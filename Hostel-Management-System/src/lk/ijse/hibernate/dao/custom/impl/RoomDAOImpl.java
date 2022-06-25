@@ -49,13 +49,8 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public Room search(String s) throws SQLException, ClassNotFoundException {
+    public List search(String s) throws SQLException, ClassNotFoundException {
         return null;
-    }
-
-    @Override
-    public boolean exist(String s) throws SQLException, ClassNotFoundException {
-        return false;
     }
 
     @Override
