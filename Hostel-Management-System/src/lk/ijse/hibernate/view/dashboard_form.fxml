@@ -11,49 +11,36 @@
    <children>
       <Pane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #414a4c;">
          <children>
-            <Label fx:id="lblMenu" alignment="CENTER" layoutX="213.0" layoutY="247.0" prefHeight="45.0" prefWidth="440.0" text="Welcome" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblMenu" alignment="CENTER" layoutX="191.0" layoutY="191.0" prefHeight="40.0" prefWidth="450.0" text="Welcome" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="30.0" />
+                  <Font size="40.0" />
                </font>
             </Label>
-            <Label fx:id="lblDescription" alignment="CENTER" layoutX="216.0" layoutY="292.0" prefHeight="25.0" prefWidth="440.0" text="Please select one of above main operations to proceed" textFill="WHITE">
+            <Label fx:id="lblDescription" alignment="CENTER" layoutX="194.0" layoutY="236.0" prefHeight="40.0" prefWidth="450.0" text="Please select one of above main operations to proceed" textFill="WHITE">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Pane prefHeight="38.0" prefWidth="700.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <ImageView fx:id="Menu" fitHeight="30.0" fitWidth="41.0" layoutX="8.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@dashboardImage/menu.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="47.0" layoutY="4.0" text="Menu">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="slider" layoutY="38.0" prefHeight="462.0" prefWidth="191.0" style="-fx-background-color: #800080;">
-               <children>
-                  <ImageView fx:id="imgStudent" fitHeight="80.0" fitWidth="80.0" layoutX="50.0" layoutY="35.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@dashboardImage/graduated.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imgReserve" fitHeight="70.0" fitWidth="70.0" layoutX="55.0" layoutY="137.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@dashboardImage/booking.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imgRoom" fitHeight="80.0" fitWidth="80.0" layoutX="50.0" layoutY="231.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@dashboardImage/bed.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
+            <ImageView fx:id="imgStudent" fitHeight="80.0" fitWidth="80.0" layoutX="43.0" layoutY="33.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@dashboardImage/graduated.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgReserve" fitHeight="70.0" fitWidth="70.0" layoutX="48.0" layoutY="270.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@dashboardImage/booking.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgRoom" fitHeight="80.0" fitWidth="80.0" layoutX="43.0" layoutY="151.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@dashboardImage/bed.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgSetting" fitHeight="50.0" fitWidth="50.0" layoutX="58.0" layoutY="420.0" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@dashboardImage/settings.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

@@ -7,10 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -25,25 +25,26 @@ public class DashboardFormController {
     public Label lblDescription;
     public AnchorPane dashboardAnchor;
     public ImageView imgReserve;
+    public ImageView imgSetting;
 
     public void imgMouseClicked(MouseEvent mouseEvent) throws IOException {
-        if (mouseEvent.getSource() instanceof ImageView){
+        if (mouseEvent.getSource() instanceof ImageView) {
             ImageView icon = (ImageView) mouseEvent.getSource();
 
             Parent root = null;
-            switch (icon.getId()){
-                case "imgStudent" :
+            switch (icon.getId()) {
+                case "imgStudent":
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hibernate/view/manage-student-form.fxml"));
                     break;
-                case "imgRoom" :
+                case "imgRoom":
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hibernate/view/manage-room-form.fxml"));
                     break;
-                case "imgReserve" :
+                case "imgReserve":
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hibernate/view/manage-reserve-form.fxml"));
                     break;
             }
 
-            if (root!=null){
+            if (root != null) {
                 Scene subScene = new Scene(root);
                 Stage primaryStage = (Stage) this.dashboardAnchor.getScene().getWindow();
                 primaryStage.setScene(subScene);
@@ -58,10 +59,10 @@ public class DashboardFormController {
     }
 
     public void imgMouseEnterAnimation(MouseEvent mouseEvent) {
-        if (mouseEvent.getSource() instanceof ImageView){
+        if (mouseEvent.getSource() instanceof ImageView) {
             ImageView icon = (ImageView) mouseEvent.getSource();
 
-            switch(icon.getId()){
+            switch (icon.getId()) {
                 case "imgStudent":
                     lblMenu.setText("Manage Student");
                     lblDescription.setText("Click to add, edit, delete, search or view student");
@@ -72,7 +73,7 @@ public class DashboardFormController {
                     break;
                 case "imgReserve":
                     lblMenu.setText("Manage Reserve");
-                    lblDescription.setText("Click here if you want reserve");
+                    lblDescription.setText("");
                     break;
             }
 
