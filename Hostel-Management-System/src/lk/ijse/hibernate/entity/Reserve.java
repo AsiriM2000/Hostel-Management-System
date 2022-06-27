@@ -5,9 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDate;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,11 +15,13 @@ import java.util.Set;
 public class Reserve {
     @Id
     private String res_Id;
-    private Date date;
-    @ManyToOne
-    private Student student;
-    @ManyToOne
-    private Room room;
+    private LocalDate date;
     private String status;
+    @ManyToOne
+    private Student students;
+    @ManyToOne
+    private Room rooms;
+    private int res_qty;
+
 
 }

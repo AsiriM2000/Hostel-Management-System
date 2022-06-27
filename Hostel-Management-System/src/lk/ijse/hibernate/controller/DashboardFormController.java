@@ -39,7 +39,7 @@ public class DashboardFormController {
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hibernate/view/manage-room-form.fxml"));
                     break;
                 case "imgReserve" :
-                    root = FXMLLoader.load(this.getClass().getResource(""));
+                    root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hibernate/view/manage-reserve-form.fxml"));
                     break;
             }
 

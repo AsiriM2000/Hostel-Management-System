@@ -2,6 +2,7 @@ package lk.ijse.hibernate.dao.custom.impl;
 
 import lk.ijse.hibernate.dao.custom.RoomDAO;
 import lk.ijse.hibernate.entity.Room;
+import lk.ijse.hibernate.entity.Student;
 import lk.ijse.hibernate.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -49,8 +50,18 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public List search(String s) throws SQLException, ClassNotFoundException {
-        return null;
+    public List<Room> search(String s) throws SQLException, ClassNotFoundException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction  = session.beginTransaction();
+
+        String hql = "FROM Room WHERE room_type_Id = : room_type_Id";
+        javax.persistence.Query query = session.createQuery(hql);
+        query.setParameter("room_type_Id",s);
+        List<Room> roomList = query.getResultList();
+
+        transaction.commit();
+        session.close();
+        return roomList;
     }
 
     @Override

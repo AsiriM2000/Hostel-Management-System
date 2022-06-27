@@ -1,6 +1,7 @@
 package lk.ijse.hibernate.dao;
 
 import lk.ijse.hibernate.dao.custom.impl.LoginDAOImpl;
+import lk.ijse.hibernate.dao.custom.impl.ReserveDAOImpl;
 import lk.ijse.hibernate.dao.custom.impl.RoomDAOImpl;
 import lk.ijse.hibernate.dao.custom.impl.StudentDAOImpl;
 
@@ -16,7 +17,7 @@ public class DAOFactory {
     }
 
     public enum DAOType{
-        LOGIN,STUDENT,ROOM;
+        LOGIN,STUDENT,ROOM,RESERVE;
     }
 
     public SuperDAO getDAO(DAOType daoType){
@@ -27,6 +28,8 @@ public class DAOFactory {
                 return new StudentDAOImpl();
             case ROOM:
                 return new RoomDAOImpl();
+            case RESERVE:
+                return new ReserveDAOImpl();
             default:
                 return null;
         }

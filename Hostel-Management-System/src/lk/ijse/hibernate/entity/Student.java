@@ -6,13 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity
 public class Student {
     @Id
     private String student_Id;
@@ -21,7 +21,16 @@ public class Student {
     private String contact;
     private LocalDate dob;
     private String gender;
-//    @OneToMany(mappedBy = "Student",cascade = CascadeType.ALL)
-//    private Set<Reserve> reserveSet = new HashSet<>();
 
+    public Student(String student_Id, String name, String address, String contact, LocalDate dob, String gender) {
+        this.student_Id = student_Id;
+        this.name = name;
+        this.address = address;
+        this.contact = contact;
+        this.dob = dob;
+        this.gender = gender;
+    }
+
+    @OneToMany(mappedBy = "students")
+    private List <Reserve> reserves = new ArrayList<>();
 }
