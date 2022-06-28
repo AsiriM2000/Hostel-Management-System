@@ -20,7 +20,7 @@ public class LoginBOImpl implements LoginBO {
 
     @Override
     public boolean update(LoginDTO dto) throws Exception {
-        return loginDAO.updateUsernamePassword(new Login(dto.getUsername(), dto.getPassword()));
+        return loginDAO.updateUsernamePassword(new Login(dto.getUsername(),dto.getPassword()));
     }
 
     @Override

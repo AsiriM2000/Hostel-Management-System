@@ -16,7 +16,7 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("view/dashboard_form.fxml"))));
+        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("view/update-password-form.fxml"))));
         Image image = new Image("lk/ijse/hibernate/view/image/hotel.png");
         primaryStage.getIcons().add(image);
         primaryStage.show();

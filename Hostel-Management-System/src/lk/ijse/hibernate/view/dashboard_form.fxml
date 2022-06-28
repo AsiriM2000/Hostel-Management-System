@@ -36,7 +36,7 @@
                   <Image url="@dashboardImage/bed.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgSetting" fitHeight="50.0" fitWidth="50.0" layoutX="58.0" layoutY="420.0" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgSetting" fitHeight="50.0" fitWidth="50.0" layoutX="58.0" layoutY="420.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@dashboardImage/settings.png" />
                </image>

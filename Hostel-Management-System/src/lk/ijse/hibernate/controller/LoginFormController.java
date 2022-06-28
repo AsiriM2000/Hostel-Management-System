@@ -31,15 +31,10 @@ public class LoginFormController {
     public PasswordField txtPassword;
     public CheckBox checkBox;
     public TextField passwordText;
+    public static AnchorPane anchorPane;
 
     public void initialize(){
-        String username = "asiri";
-        String password = "1234";
-        try {
-            loginBO.save(new LoginDTO(username, password));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
     public void key_Entered(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {

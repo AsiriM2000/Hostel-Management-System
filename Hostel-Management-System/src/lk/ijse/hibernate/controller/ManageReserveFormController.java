@@ -87,7 +87,7 @@ public class ManageReserveFormController {
                     for (RoomDTO dto : all) {
                         txtType.setText(dto.getType());
                         txtKeyMoney.setText(dto.getKey_money().setScale(2).toString());
-                        Optional<ReserveTM> optOrderDetail = tblCart.getItems().stream().filter(detail -> detail.getRooms().getRoom_type_Id().equals(newValue)).findFirst();
+                        Optional<ReserveTM> optOrderDetail = tblCart.getItems().stream().filter(detail -> detail.getRooms().equals(newValue)).findFirst();
                         txtRoomQty.setText((optOrderDetail.isPresent() ? dto.getQty() - optOrderDetail.get().getRes_qty() : dto.getQty()) + "");
 
                     }
@@ -154,20 +154,14 @@ public class ManageReserveFormController {
         String resId = txtResId.getText();
         int qty = Integer.parseInt(txtQty.getText());
 
-        Student s1 = new Student();
-        s1.setStudent_Id(sId);
-
-        Room r1 = new Room();
-        r1.setRoom_type_Id(rId);
-
-        boolean exists = tblCart.getItems().stream().anyMatch(detail -> detail.getRooms().getRoom_type_Id().equals(rId));
+        boolean exists = tblCart.getItems().stream().anyMatch(detail -> detail.getRooms().equals(rId));
         if (exists) {
-            ReserveTM tm = tblCart.getItems().stream().filter(detail -> detail.getRooms().getRoom_type_Id().equals(rId)).findFirst().get();
+            ReserveTM tm = tblCart.getItems().stream().filter(detail -> detail.getRooms().equals(rId)).findFirst().get();
             tm.setRes_qty(tm.getRes_qty() + qty);
             tblCart.refresh();
         }
 
-        tblCart.getItems().add(new ReserveTM(resId,s1,r1,qty));
+        tblCart.getItems().add(new ReserveTM(resId,sId,rId,qty));
         cmbRoom.getSelectionModel().clearSelection();
         cmbRoom.requestFocus();
 
@@ -179,8 +173,8 @@ public class ManageReserveFormController {
         String resId = tblCart.getSelectionModel().getSelectedItem().getRes_Id();
         LocalDate date = LocalDate.now();
         String status = "Pay";
-        String sId = tblCart.getSelectionModel().getSelectedItem().getStudents().getStudent_Id();
-        String rId = tblCart.getSelectionModel().getSelectedItem().getRooms().getRoom_type_Id();
+        String sId = tblCart.getSelectionModel().getSelectedItem().getStudents();
+        String rId = tblCart.getSelectionModel().getSelectedItem().getRooms();
         int qty = tblCart.getSelectionModel().getSelectedItem().getRes_qty();
         Student student = new Student();
         student.setStudent_Id(sId);

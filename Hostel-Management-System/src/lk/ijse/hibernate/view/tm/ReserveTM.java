@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @ToString
 public class ReserveTM {
     private String res_Id;
-    private Student students;
-    private Room rooms;
+    private String students;
+    private String rooms;
     private int res_qty;
 }

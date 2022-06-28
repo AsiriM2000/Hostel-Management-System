@@ -25,6 +25,7 @@ public class LoginDAOImpl implements LoginDAO {
     public boolean updateUsernamePassword(Login entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
+
         session.update(entity);
 
         transaction.commit();

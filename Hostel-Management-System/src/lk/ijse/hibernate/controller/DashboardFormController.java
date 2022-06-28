@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class DashboardFormController {
 
@@ -41,6 +42,17 @@ public class DashboardFormController {
                     break;
                 case "imgReserve":
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hibernate/view/manage-reserve-form.fxml"));
+                    break;
+                case "imgSetting":
+                    LoginFormController.anchorPane = dashboardAnchor;
+                    URL resorce = getClass().getResource("/lk/ijse/hibernate/view/update-password-form.fxml");
+                    Parent parent = FXMLLoader.load(resorce);
+                    Scene scene = new Scene(parent);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.centerOnScreen();
+                    stage.show();
+
                     break;
             }
 
@@ -75,6 +87,11 @@ public class DashboardFormController {
                     lblMenu.setText("Manage Reserve");
                     lblDescription.setText("");
                     break;
+                case "imgSetting":
+                    lblMenu.setText("Setting");
+                    lblDescription.setText("");
+                    break;
+
             }
 
             ScaleTransition scaleT = new ScaleTransition(Duration.millis(200), icon);
