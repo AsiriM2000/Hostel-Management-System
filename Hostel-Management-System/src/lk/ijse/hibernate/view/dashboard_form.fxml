@@ -11,32 +11,32 @@
    <children>
       <Pane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #414a4c;">
          <children>
-            <Label fx:id="lblMenu" alignment="CENTER" layoutX="191.0" layoutY="191.0" prefHeight="40.0" prefWidth="450.0" text="Welcome" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblMenu" alignment="CENTER" layoutX="127.0" layoutY="364.0" prefHeight="40.0" prefWidth="450.0" text="Welcome" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label fx:id="lblDescription" alignment="CENTER" layoutX="194.0" layoutY="236.0" prefHeight="40.0" prefWidth="450.0" text="Please select one of above main operations to proceed" textFill="WHITE">
+            <Label fx:id="lblDescription" alignment="CENTER" layoutX="127.0" layoutY="422.0" prefHeight="40.0" prefWidth="450.0" text="Please select one of above main operations to proceed" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgStudent" fitHeight="80.0" fitWidth="80.0" layoutX="43.0" layoutY="33.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgStudent" fitHeight="80.0" fitWidth="80.0" layoutX="44.0" layoutY="180.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@dashboardImage/graduated.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgReserve" fitHeight="70.0" fitWidth="70.0" layoutX="48.0" layoutY="270.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgReserve" fitHeight="70.0" fitWidth="70.0" layoutX="398.0" layoutY="190.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@dashboardImage/booking.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgRoom" fitHeight="80.0" fitWidth="80.0" layoutX="43.0" layoutY="151.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgRoom" fitHeight="80.0" fitWidth="80.0" layoutX="214.0" layoutY="185.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@dashboardImage/bed.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgSetting" fitHeight="50.0" fitWidth="50.0" layoutX="58.0" layoutY="420.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgSetting" fitHeight="30.0" fitWidth="30.0" layoutX="656.0" layoutY="14.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@dashboardImage/settings.png" />
                </image>

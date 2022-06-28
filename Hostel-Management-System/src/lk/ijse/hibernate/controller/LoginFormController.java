@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.hibernate.bo.BOFactory;
@@ -32,10 +33,11 @@ public class LoginFormController {
     public CheckBox checkBox;
     public TextField passwordText;
     public static AnchorPane anchorPane;
+    public Pane registerPane;
+    public TextField txtRegister_Username;
+    public PasswordField txtRegister_Password;
+    public Pane loginPane;
 
-    public void initialize(){
-
-    }
     public void key_Entered(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             txtPassword.requestFocus();
@@ -109,5 +111,37 @@ public class LoginFormController {
         txtPassword.setText(passwordText.getText());
         txtPassword.setVisible(true);
         passwordText.setVisible(false);
+    }
+
+    public void RegisterOnAction(ActionEvent actionEvent) {
+        registerPane.setVisible(true);
+    }
+
+    public void RegisteredOnAction(ActionEvent actionEvent) {
+        String reg_user = txtRegister_Username.getText();
+        String reg_pass = txtRegister_Password.getText();
+
+        try {
+            boolean b = loginBO.save(new LoginDTO(reg_user,reg_pass));
+            if (b){
+                new Alert(Alert.AlertType.CONFIRMATION,"Register success").show();
+            }else {
+                new Alert(Alert.AlertType.ERROR,"Register Failed").show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void BackLoginOnAction(ActionEvent actionEvent) {
+        loginPane.setVisible(true);
+        registerPane.setVisible(false);
+    }
+
+
+    public void key_Entered_register(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            txtRegister_Password.requestFocus();
+        }
     }
 }
