@@ -21,7 +21,7 @@
       <ComboBox fx:id="cmbStudent" layoutX="28.0" layoutY="119.0" prefWidth="150.0" promptText="Student ID" />
       <TextField fx:id="txtName" layoutX="29.0" layoutY="156.0" promptText="Student Name" />
       <TextField fx:id="txtAddress" layoutX="29.0" layoutY="193.0" promptText="Student Address" />
-      <TextField fx:id="txtResId" layoutX="629.0" layoutY="119.0" promptText="Reservation ID" />
+      <TextField fx:id="txtResId" layoutX="628.0" layoutY="156.0" promptText="RES00-001" />
       <ComboBox fx:id="cmbRoom" layoutX="232.0" layoutY="119.0" prefWidth="150.0" promptText="Room Type ID" />
       <TextField fx:id="txtType" layoutX="232.0" layoutY="156.0" prefHeight="26.0" prefWidth="150.0" promptText="Room Type" />
       <TextField fx:id="txtRoomQty" layoutX="232.0" layoutY="193.0" prefHeight="26.0" prefWidth="149.0" promptText="Available Room Qty" />
@@ -57,5 +57,10 @@
          </font>
       </Label>
       <ComboBox fx:id="cmbStatus" layoutX="431.0" layoutY="120.0" prefWidth="150.0" promptText="Status" />
+      <Label layoutX="627.0" layoutY="121.0" text="Reservation ID">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

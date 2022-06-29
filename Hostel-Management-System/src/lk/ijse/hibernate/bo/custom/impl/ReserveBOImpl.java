@@ -80,4 +80,19 @@ public class ReserveBOImpl implements ReserveBO {
         return roomDAO.update(new Room(dto.getRoom_type_Id(), dto.getType(), dto.getKey_money(), dto.getQty()));
     }
 
+    @Override
+    public List<ReserveDTO> searchReserved(String id) throws Exception {
+        List<Reserve> reserve = reserveDAO.searchReserved(id);
+        List<ReserveDTO> reserveDTOS = new ArrayList<>();
+        for (Reserve r : reserve){
+            reserveDTOS.add(new ReserveDTO(r.getRes_Id(),r.getDate(),r.getStatus(),r.getStudents(),r.getRooms(),r.getRes_qty()));
+        }
+        return reserveDTOS;
+    }
+
+    @Override
+    public boolean deleteReserved(String id) throws Exception {
+        return  reserveDAO.deleteReserved(id);
+    }
+
 }

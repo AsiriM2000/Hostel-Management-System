@@ -17,9 +17,9 @@ public class Reserve {
     private String res_Id;
     private LocalDate date;
     private String status;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Student students;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Room rooms;
     private int res_qty;
 

@@ -24,7 +24,7 @@ public class Room {
         this.key_money = key_money;
         this.qty = qty;
     }
-    @OneToMany(mappedBy = "rooms")
+    @OneToMany(mappedBy = "rooms",cascade = CascadeType.ALL)
     private List <Reserve> reserves = new ArrayList<>();
 
 }

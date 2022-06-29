@@ -31,6 +31,6 @@ public class Student {
         this.gender = gender;
     }
 
-    @OneToMany(mappedBy = "students")
+    @OneToMany(mappedBy = "students",cascade = CascadeType.ALL)
     private List <Reserve> reserves = new ArrayList<>();
 }
