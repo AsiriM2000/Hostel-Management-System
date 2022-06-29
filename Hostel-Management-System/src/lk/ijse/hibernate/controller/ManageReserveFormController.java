@@ -4,10 +4,18 @@ import com.jfoenix.controls.JFXButton;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.hibernate.bo.BOFactory;
 import lk.ijse.hibernate.bo.custom.ReserveBO;
@@ -20,6 +28,8 @@ import lk.ijse.hibernate.entity.Room;
 import lk.ijse.hibernate.entity.Student;
 import lk.ijse.hibernate.view.tm.ReserveTM;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -43,14 +53,17 @@ public class ManageReserveFormController {
     public TextField txtQty;
     public TableView<ReserveTM>tblCart;
     public JFXButton btnAdd;
+    public AnchorPane reservationAnchor;
+    public ComboBox<String> cmbStatus;
 
     public void initialize() {
 
         tblCart.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("res_Id"));
-        tblCart.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("students"));
-        tblCart.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("rooms"));
-        tblCart.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("res_qty"));
-        TableColumn<ReserveTM, Button> lastCol = (TableColumn<ReserveTM, Button>) tblCart.getColumns().get(4);
+        tblCart.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("status"));
+        tblCart.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("students"));
+        tblCart.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("rooms"));
+        tblCart.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("res_qty"));
+        TableColumn<ReserveTM, Button> lastCol = (TableColumn<ReserveTM, Button>) tblCart.getColumns().get(5);
         lastCol.setCellValueFactory(param -> {
             Button btnDelete = new Button("Delete");
             btnDelete.setOnAction(event -> {
@@ -101,6 +114,9 @@ public class ManageReserveFormController {
                 txtQty.clear();
             }
         });
+
+        cmbStatus.setItems(FXCollections.observableArrayList("Full Pay","Half Pay"));
+
         loadAllID();
         loadAllRoomID();
     }
@@ -152,16 +168,24 @@ public class ManageReserveFormController {
         String sId = cmbStudent.getSelectionModel().getSelectedItem();
         String rId = cmbRoom.getSelectionModel().getSelectedItem();
         String resId = txtResId.getText();
+        String status  = cmbStatus.getSelectionModel().getSelectedItem();
         int qty = Integer.parseInt(txtQty.getText());
+        LocalDate date = LocalDate.now();
 
-        boolean exists = tblCart.getItems().stream().anyMatch(detail -> detail.getRooms().equals(rId));
-        if (exists) {
-            ReserveTM tm = tblCart.getItems().stream().filter(detail -> detail.getRooms().equals(rId)).findFirst().get();
-            tm.setRes_qty(tm.getRes_qty() + qty);
-            tblCart.refresh();
+        if (!resId.matches("^(RES00-)[0-9]{3,5}$")) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Reservation Id").show();
+            return;
         }
 
-        tblCart.getItems().add(new ReserveTM(resId,sId,rId,qty));
+        if (btnAdd.getText().equals("Add")){
+            boolean exists = tblCart.getItems().stream().anyMatch(detail -> detail.getRooms().equals(rId));
+            if (exists) {
+                ReserveTM tm = tblCart.getItems().stream().filter(detail -> detail.getRooms().equals(rId)).findFirst().get();
+                tm.setRes_qty(tm.getRes_qty() + qty);
+                tblCart.refresh();
+            }
+        }
+        tblCart.getItems().add(new ReserveTM(resId,date,status,sId,rId,qty));
         cmbRoom.getSelectionModel().clearSelection();
         cmbRoom.requestFocus();
 
@@ -172,7 +196,7 @@ public class ManageReserveFormController {
     public void ReservedOnAction(ActionEvent actionEvent) {
         String resId = tblCart.getSelectionModel().getSelectedItem().getRes_Id();
         LocalDate date = LocalDate.now();
-        String status = "Pay";
+        String status = tblCart.getSelectionModel().getSelectedItem().getStatus();
         String sId = tblCart.getSelectionModel().getSelectedItem().getStudents();
         String rId = tblCart.getSelectionModel().getSelectedItem().getRooms();
         int qty = tblCart.getSelectionModel().getSelectedItem().getRes_qty();
@@ -198,6 +222,7 @@ public class ManageReserveFormController {
         cmbRoom.getSelectionModel().clearSelection();
         txtQty.clear();
         tblCart.getItems().clear();
+        txtResId.clear();
 
         try {
             List<RoomDTO> dto = reserveBO.searchRoom(rId);
@@ -209,5 +234,15 @@ public class ManageReserveFormController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void navigateToHome(MouseEvent mouseEvent) throws IOException {
+        URL resource = this.getClass().getResource("/lk/ijse/hibernate/view/dashboard_form.fxml");
+        Parent root = FXMLLoader.load(resource);
+        Scene scene = new Scene(root);
+        Stage primaryStage = (Stage) (this.reservationAnchor.getScene().getWindow());
+        primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
+        Platform.runLater(() -> primaryStage.sizeToScene());
     }
 }
