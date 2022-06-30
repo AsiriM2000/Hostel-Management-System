@@ -1,16 +1,24 @@
 package lk.ijse.hibernate.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import lk.ijse.hibernate.bo.BOFactory;
 import lk.ijse.hibernate.bo.custom.ReserveBO;
 import lk.ijse.hibernate.dto.ReserveDTO;
 import lk.ijse.hibernate.dto.RoomDTO;
 import lk.ijse.hibernate.view.tm.ReserveTM;
 
+import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,6 +27,7 @@ public class CheckReservationFormController {
     private final ReserveBO reserveBO = (ReserveBO) BOFactory.getBoFactory().getBO(BOFactory.BOType.RESERVE);
     public TextField txtReservationId;
     public TableView<ReserveTM> tblReserved;
+    public AnchorPane checkReservationAnchor;
 
     public void initialize(){
         tblReserved.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("res_Id"));
@@ -28,7 +37,14 @@ public class CheckReservationFormController {
         tblReserved.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("rooms"));
         tblReserved.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("res_qty"));
     }
-    public void navigateToHome(MouseEvent mouseEvent) {
+    public void navigateToHome(MouseEvent mouseEvent) throws IOException {
+        URL resource = this.getClass().getResource("/lk/ijse/hibernate/view/dashboard_form.fxml");
+        Parent root = FXMLLoader.load(resource);
+        Scene scene = new Scene(root);
+        Stage primaryStage = (Stage) (this.checkReservationAnchor.getScene().getWindow());
+        primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
+        Platform.runLater(() -> primaryStage.sizeToScene());
     }
 
     public void btnSearchReservation(ActionEvent actionEvent) {

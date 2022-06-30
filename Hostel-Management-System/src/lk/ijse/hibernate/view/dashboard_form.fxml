@@ -41,6 +41,11 @@
                   <Image url="@dashboardImage/settings.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="imgReservedCheck" fitHeight="100.0" fitWidth="100.0" layoutX="556.0" layoutY="170.0" onMouseClicked="#imgMouseClicked" onMouseEntered="#imgMouseEnterAnimation" onMouseExited="#imgMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/online-booking.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

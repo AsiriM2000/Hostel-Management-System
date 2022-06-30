@@ -27,6 +27,7 @@ public class DashboardFormController {
     public AnchorPane dashboardAnchor;
     public ImageView imgReserve;
     public ImageView imgSetting;
+    public ImageView imgReservedCheck;
 
     public void imgMouseClicked(MouseEvent mouseEvent) throws IOException {
         if (mouseEvent.getSource() instanceof ImageView) {
@@ -42,6 +43,9 @@ public class DashboardFormController {
                     break;
                 case "imgReserve":
                     root = FXMLLoader.load(this.getClass().getResource("/lk/ijse/hibernate/view/manage-reserve-form.fxml"));
+                    break;
+                case "imgReservedCheck":
+                    root= FXMLLoader.load(this.getClass().getResource("/lk/ijse/hibernate/view/check-reservation-form.fxml"));
                     break;
                 case "imgSetting":
                     LoginFormController.anchorPane = dashboardAnchor;
@@ -85,11 +89,15 @@ public class DashboardFormController {
                     break;
                 case "imgReserve":
                     lblMenu.setText("Manage Reserve");
-                    lblDescription.setText("");
+                    lblDescription.setText("Click to add, reserved or view reserved");
+                    break;
+                case "imgReservedCheck":
+                    lblMenu.setText("Check Reserved Details");
+                    lblDescription.setText("Click to check, remove or view reserved details");
                     break;
                 case "imgSetting":
                     lblMenu.setText("Setting");
-                    lblDescription.setText("");
+                    lblDescription.setText("Click to change your current password");
                     break;
 
             }

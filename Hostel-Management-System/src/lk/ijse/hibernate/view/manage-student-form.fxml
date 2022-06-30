@@ -26,25 +26,25 @@
       </Label>
       <AnchorPane layoutX="71.0" layoutY="93.0" prefHeight="36.0" prefWidth="432.0" styleClass="textPane" stylesheets="@styls/student-form.css" AnchorPane.rightAnchor="45.0">
          <children>
-            <TextField fx:id="txtStudentId" layoutX="8.0" layoutY="6.0" prefHeight="25.0" prefWidth="574.0" styleClass="textField" stylesheets="@styls/student-form.css" />
+            <TextField fx:id="txtStudentId" layoutX="8.0" layoutY="6.0" onKeyReleased="#textFields_Key_Released" prefHeight="25.0" prefWidth="574.0" promptText="S00-001" styleClass="textField" stylesheets="@styls/student-form.css" />
             <Label layoutX="26.0" layoutY="-8.0" styleClass="textLabel" stylesheets="@styls/student-form.css" text="Student Id" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="71.0" layoutY="150.0" prefHeight="36.0" prefWidth="432.0" styleClass="textPane" stylesheets="@styls/student-form.css">
          <children>
-            <TextField fx:id="txtName" layoutX="8.0" layoutY="6.0" prefHeight="25.0" prefWidth="574.0" styleClass="textField" stylesheets="@styls/student-form.css" />
+            <TextField fx:id="txtName" layoutX="8.0" layoutY="6.0" onKeyReleased="#textFields_Key_Released" prefHeight="25.0" prefWidth="574.0" styleClass="textField" stylesheets="@styls/student-form.css" />
             <Label layoutX="26.0" layoutY="-8.0" styleClass="textLabel" stylesheets="@styls/student-form.css" text="Student Name" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="71.0" layoutY="208.0" prefHeight="36.0" prefWidth="432.0" styleClass="textPane" stylesheets="@styls/student-form.css">
          <children>
-            <TextField fx:id="txtAddress" layoutX="8.0" layoutY="6.0" prefHeight="25.0" prefWidth="574.0" styleClass="textField" stylesheets="@styls/student-form.css" />
+            <TextField fx:id="txtAddress" layoutX="8.0" layoutY="6.0" onKeyReleased="#textFields_Key_Released" prefHeight="25.0" prefWidth="574.0" styleClass="textField" stylesheets="@styls/student-form.css" />
             <Label layoutX="26.0" layoutY="-8.0" styleClass="textLabel" stylesheets="@styls/student-form.css" text="Address" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="71.0" layoutY="269.0" prefHeight="36.0" prefWidth="432.0" styleClass="textPane" stylesheets="@styls/student-form.css">
          <children>
-            <TextField fx:id="txtContact" layoutX="8.0" layoutY="6.0" prefHeight="25.0" prefWidth="574.0" styleClass="textField" stylesheets="@styls/student-form.css" />
+            <TextField fx:id="txtContact" layoutX="8.0" layoutY="6.0" onKeyReleased="#textFields_Key_Released" prefHeight="25.0" prefWidth="574.0" styleClass="textField" stylesheets="@styls/student-form.css" />
             <Label layoutX="26.0" layoutY="-8.0" styleClass="textLabel" stylesheets="@styls/student-form.css" text="Contact Number" />
          </children>
       </AnchorPane>

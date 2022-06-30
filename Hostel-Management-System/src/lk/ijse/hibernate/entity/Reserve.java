@@ -23,5 +23,4 @@ public class Reserve {
     private Room rooms;
     private int res_qty;
 
-
 }

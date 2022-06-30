@@ -165,16 +165,18 @@ public class ManageReserveFormController {
     }
 
     public void AddOnAction(ActionEvent actionEvent) {
-        if (!txtQty.getText().matches("^[0-1]$") || Integer.parseInt(txtQty.getText()) > Integer.parseInt(txtRoomQty.getText())) {
-            new Alert(Alert.AlertType.ERROR, "Only one room can be reserved for one person").show();
-            return;
-        }
+
         String sId = cmbStudent.getSelectionModel().getSelectedItem();
         String rId = cmbRoom.getSelectionModel().getSelectedItem();
         String resId = txtResId.getText();
         String status  = cmbStatus.getSelectionModel().getSelectedItem();
         int qty = Integer.parseInt(txtQty.getText());
         LocalDate date = LocalDate.now();
+
+        if (!txtQty.getText().matches("^[0-1]$") || Integer.parseInt(txtQty.getText()) > Integer.parseInt(txtRoomQty.getText())) {
+            new Alert(Alert.AlertType.ERROR, "Only one room can be reserved for one person").show();
+            return;
+        }
 
         if (!resId.matches("^(RES00-)[0-9]{3,5}$")) {
             new Alert(Alert.AlertType.ERROR, "Invalid Reservation Id").show();

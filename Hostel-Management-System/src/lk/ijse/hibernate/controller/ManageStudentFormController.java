@@ -13,19 +13,24 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.hibernate.bo.BOFactory;
 import lk.ijse.hibernate.bo.custom.StudentBO;
 import lk.ijse.hibernate.dto.StudentDTO;
+import lk.ijse.hibernate.util.ValidationUtil;
 import lk.ijse.hibernate.view.tm.StudentTM;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class ManageStudentFormController {
     private final StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBO(BOFactory.BOType.STUDENT);
@@ -39,6 +44,7 @@ public class ManageStudentFormController {
     public JFXButton btnSave;
     public JFXButton btnDelete;
     public AnchorPane studentAnchor;
+    LinkedHashMap<TextField, Pattern> map = new LinkedHashMap<>();
 
     public void initialize() {
         tblStudent.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("student_Id"));
@@ -73,6 +79,19 @@ public class ManageStudentFormController {
                 cmbGender.setDisable(false);
             }
         });
+
+        Pattern id = Pattern.compile("^(S00-)[0-9]{3,5}$");
+        Pattern name = Pattern.compile("^[A-Za-z ]+$");
+        Pattern address = Pattern.compile("^[a-zA-Z]+$");
+        Pattern contact = Pattern.compile("^[\\\\+]?[(]?[0-9]{3}[)]?[-\\\\s\\\\.]?[0-9]{3}[-\\\\s\\\\.]?[0-9]{4,6}$");
+
+
+        map.put(txtStudentId,id);
+        map.put(txtName,name);
+        map.put(txtAddress,address);
+        map.put(txtContact,contact);
+
+
     }
 
     public void SaveOnAction(ActionEvent actionEvent) {
@@ -187,5 +206,15 @@ public class ManageStudentFormController {
         primaryStage.setScene(scene);
         primaryStage.centerOnScreen();
         Platform.runLater(() -> primaryStage.sizeToScene());
+    }
+
+    public void textFields_Key_Released(KeyEvent keyEvent) {
+        if (keyEvent.getCode()== KeyCode.ENTER){
+            Object response = ValidationUtil.validate(map,btnSave);
+            if (response instanceof TextField) {
+                TextField textField = (TextField) response;
+                textField.requestFocus();
+            }
+        }
     }
 }
